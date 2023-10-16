@@ -94,7 +94,7 @@ func main() {
 	}
 	wg.Wait()
 	// producers are done, so we can close the channel, normally the producer should do that,
-	// so we don't risk panic on close but in current implementation we are sure that after wg.Done there are no more
+	// so we don't risk panic on send but in current implementation we are sure that after wg.Done there are no more
 	// sends to the channel, so we can close it here, which will automatically drain channel and exit for range loop later.
 	close(results)
 	// with the assumption we don't fetch the same url twice and we check for given url before fetching,
